@@ -1,0 +1,44 @@
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 18px 26px;
+  border-top: 1px solid var(--color-border-subtle);
+  background: oklch(0.99 0.008 220);
+  z-index: 10;
+}
+
+.item {
+  cursor: pointer;
+  font-size: 11px;
+  color: var(--nav-inactive);
+  min-width: 44px;
+  text-align: center;
+}
+
+.item.active {
+  color: var(--nav-active);
+  font-weight: 600;
+}
+
+.fab {
+  cursor: pointer;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--gradient-brand);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 300;
+  margin-top: -30px;
+  box-shadow: var(--shadow-fab);
+}

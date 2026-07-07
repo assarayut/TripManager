@@ -1,0 +1,27 @@
+.chip {
+  cursor: pointer;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  padding: 8px 13px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dashed {
+  cursor: pointer;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12.5px;
+  padding: 8px 13px;
+  border-radius: var(--radius-sm);
+  background: #fff;
+  border: 1.5px dashed var(--color-border-dashed);
+  color: var(--color-text-accent);
+  font-weight: 600;
+}

@@ -1,0 +1,48 @@
+.row {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  background: var(--color-bg-card);
+  border-radius: 16px;
+  padding: 11px 13px;
+  box-shadow: var(--shadow-card);
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  flex-shrink: 0;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.note {
+  font-size: 13px;
+  font-weight: 600;
+  color: oklch(0.3 0.02 235);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.subtitle {
+  font-size: 11px;
+  color: var(--color-text-faint);
+}
+
+.amount {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: oklch(0.3 0.02 235);
+  flex-shrink: 0;
+}

@@ -1,0 +1,316 @@
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-screen);
+  padding-bottom: 90px;
+}
+
+.header {
+  padding: 52px 24px 12px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: oklch(0.3 0.03 235);
+}
+
+.tripName {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.modeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  background: oklch(0.95 0.03 178);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: oklch(0.38 0.07 178);
+}
+
+.body {
+  flex: 1;
+  overflow: auto;
+  padding: 10px 24px 10px;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: oklch(0.32 0.03 235);
+  margin-bottom: 10px;
+}
+
+.balanceList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.balanceCard {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-card);
+}
+
+.balanceTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.balanceMember {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.avatarSm {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+}
+
+.memberName {
+  font-size: 14px;
+  font-weight: 600;
+  color: oklch(0.3 0.02 235);
+}
+
+.memberNameSm {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: oklch(0.3 0.02 235);
+}
+
+.netAmount {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.paidLine {
+  font-size: 11px;
+  color: var(--color-text-faint);
+  margin-top: 6px;
+}
+
+.balanceBarTrack {
+  height: 6px;
+  background: oklch(0.92 0.015 235);
+  border-radius: var(--radius-pill);
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.balanceBarFill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+}
+
+.settlementList {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.settlementRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: oklch(0.95 0.03 178);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+
+.settlementText {
+  font-size: 13px;
+  color: oklch(0.32 0.03 178);
+}
+
+.settlementAmount {
+  margin-left: auto;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: oklch(0.3 0.03 178);
+}
+
+.emptyState {
+  text-align: center;
+  padding: 20px;
+  color: var(--color-text-faint);
+  font-size: 13px;
+}
+
+.emptyStateSm {
+  text-align: center;
+  padding: 16px;
+  color: var(--color-text-faint);
+  font-size: 13px;
+}
+
+.poolCard {
+  background: var(--gradient-brand);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.poolLabel {
+  font-size: 11.5px;
+  opacity: 0.85;
+}
+
+.poolBalance {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.poolFoot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  opacity: 0.9;
+  margin-top: 10px;
+}
+
+.contributionList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.contributionCard {
+  background: #fff;
+  border-radius: 16px;
+  padding: 12px 14px;
+  box-shadow: var(--shadow-card);
+}
+
+.contributionTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contributedAmount {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: oklch(0.32 0.03 235);
+}
+
+.contributionActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 9px;
+}
+
+.contributionInput {
+  flex: 1;
+  box-sizing: border-box;
+  background: var(--color-bg-input);
+  border: 1px solid oklch(0.9 0.015 220);
+  border-radius: 10px;
+  padding: 8px 11px;
+  font-size: 12.5px;
+  font-family: var(--font-body);
+}
+
+.addButton {
+  cursor: pointer;
+  min-width: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: oklch(0.95 0.03 178);
+  color: oklch(0.4 0.08 178);
+  border-radius: 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.withdrawButton {
+  cursor: pointer;
+  min-width: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: oklch(0.96 0.04 40);
+  color: oklch(0.48 0.11 40);
+  border-radius: 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.pendingList {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.pendingCard {
+  background: oklch(0.97 0.03 60);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+
+.pendingTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pendingPayer {
+  font-size: 13px;
+  font-weight: 600;
+  color: oklch(0.35 0.05 60);
+}
+
+.pendingAmount {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: oklch(0.35 0.05 60);
+}
+
+.pendingMeta {
+  font-size: 11.5px;
+  color: oklch(0.5 0.04 60);
+  margin-top: 2px;
+}
+
+.reimburseButton {
+  cursor: pointer;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 9px;
+  background: oklch(0.6 0.1 60);
+  color: #fff;
+  border-radius: 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+}

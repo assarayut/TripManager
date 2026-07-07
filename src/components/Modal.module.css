@@ -1,0 +1,43 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 30, 40, 0.4);
+}
+
+.sheet {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: 80px;
+  bottom: 80px;
+  overflow: auto;
+  background: #fff;
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: var(--shadow-modal);
+}
+
+.closeButton {
+  cursor: pointer;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: oklch(0.95 0.01 220);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: oklch(0.4 0.02 235);
+  z-index: 2;
+}
