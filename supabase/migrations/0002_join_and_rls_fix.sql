@@ -43,6 +43,7 @@ grant execute on function public.join_trip_by_code(text) to authenticated;
 -- Let the trip creator delete their trip. All child rows (members, expenses,
 -- splits, category budgets, pool transactions) cascade via their
 -- `on delete cascade` foreign keys.
+drop policy if exists "the creator can delete their trip" on trips;
 create policy "the creator can delete their trip"
   on trips for delete to authenticated
   using (created_by = auth.uid());

@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useQueries } from '@tanstack/react-query';
 import { useTrips } from '../hooks/useTrips';
+import { useAuth } from '../hooks/useAuth';
+import { useToast } from '../hooks/useToast';
 import { fetchExpenses } from '../lib/api';
 import { TripCard } from '../components/TripCard';
 import { formatDateRange } from '../utils/money';
@@ -9,6 +11,16 @@ import styles from './TripsScreen.module.css';
 export function TripsScreen() {
   const navigate = useNavigate();
   const { data: trips, isLoading } = useTrips();
+  const { profile, signOut } = useAuth();
+  const { showToast } = useToast();
+
+  const handleLogout = async () => {
+    try {
+      await signOut();
+    } catch {
+      showToast('ออกจากระบบไม่สำเร็จ');
+    }
+  };
 
   const expenseQueries = useQueries({
     queries: (trips ?? []).map((t) => ({
@@ -20,8 +32,13 @@ export function TripsScreen() {
   return (
     <div className={styles.screen}>
       <div className={styles.header}>
-        <div className={styles.eyebrow}>TRIP EXPENSE MANAGER</div>
-        <div className={styles.title}>ทริปของฉัน</div>
+        <div>
+          <div className={styles.eyebrow}>TRIP EXPENSE MANAGER</div>
+          <div className={styles.title}>ทริปของฉัน</div>
+        </div>
+        <div className={styles.logout} onClick={handleLogout}>
+          ⎋ {profile?.displayName ? `${profile.displayName} · ` : ''}ออกจากระบบ
+        </div>
       </div>
 
       <div className={`noscroll ${styles.list}`}>
