@@ -1,0 +1,172 @@
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-screen, oklch(0.98 0.01 220));
+}
+
+.header {
+  padding: 50px 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.backButton {
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  background: oklch(0.94 0.015 220);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: oklch(0.42 0.03 235);
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.title {
+  font-family: var(--font-display, 'Kanit', sans-serif);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-text-heading, oklch(0.3 0.03 235));
+}
+
+.body {
+  flex: 1;
+  overflow: auto;
+  padding: 18px 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.currentCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px 16px;
+  box-shadow: 0 4px 14px -8px rgba(30, 60, 90, 0.18);
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.currentName {
+  font-size: 15px;
+  font-weight: 600;
+  color: oklch(0.3 0.02 235);
+}
+
+.currentSub {
+  font-size: 12px;
+  color: oklch(0.55 0.02 235);
+  margin-top: 2px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 14px -8px rgba(30, 60, 90, 0.18);
+}
+
+.cardTitle {
+  font-family: var(--font-display, 'Kanit', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: oklch(0.32 0.03 235);
+  margin-bottom: 10px;
+}
+
+.fieldLabel {
+  font-size: 12px;
+  color: oklch(0.5 0.02 235);
+  margin-bottom: 6px;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  background: oklch(0.98 0.008 220);
+  border: 1px solid oklch(0.9 0.02 220);
+  border-radius: 12px;
+  padding: 11px 13px;
+  font-size: 13px;
+  font-family: 'Anuphan', sans-serif;
+  color: oklch(0.35 0.02 235);
+  margin-bottom: 12px;
+}
+
+.saveButton {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, oklch(0.72 0.09 178), oklch(0.68 0.1 238));
+  color: #fff;
+  border-radius: 12px;
+  font-family: var(--font-display, 'Kanit', sans-serif);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.saveButton[data-disabled='true'] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.hint {
+  font-size: 11px;
+  color: oklch(0.55 0.02 235);
+  margin: -4px 0 10px;
+  line-height: 1.5;
+}
+
+.dangerCard {
+  background: oklch(0.97 0.03 25);
+  border: 1px solid oklch(0.88 0.06 25);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.dangerTitle {
+  font-family: var(--font-display, 'Kanit', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: oklch(0.5 0.15 25);
+  margin-bottom: 6px;
+}
+
+.dangerText {
+  font-size: 12px;
+  color: oklch(0.5 0.08 25);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.dangerButton {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: oklch(0.58 0.16 25);
+  color: #fff;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.dangerButton[data-disabled='true'] {
+  opacity: 0.5;
+  pointer-events: none;
+}

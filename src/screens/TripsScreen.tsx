@@ -36,8 +36,13 @@ export function TripsScreen() {
           <div className={styles.eyebrow}>TRIP EXPENSE MANAGER</div>
           <div className={styles.title}>ทริปของฉัน</div>
         </div>
-        <div className={styles.logout} onClick={handleLogout}>
-          ⎋ {profile?.displayName ? `${profile.displayName} · ` : ''}ออกจากระบบ
+        <div className={styles.headerActions}>
+          <div className={styles.iconButton} onClick={() => navigate('/profile')} title="โปรไฟล์">
+            ⚙️ {profile?.displayName ?? 'โปรไฟล์'}
+          </div>
+          <div className={styles.logout} onClick={handleLogout}>
+            ⎋ ออกจากระบบ
+          </div>
         </div>
       </div>
 

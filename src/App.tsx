@@ -6,6 +6,7 @@ import { Toast } from './components/Toast';
 import { LoginScreen } from './screens/LoginScreen';
 import { TripsScreen } from './screens/TripsScreen';
 import { CreateTripScreen } from './screens/CreateTripScreen';
+import { ProfileScreen } from './screens/ProfileScreen';
 import { DashboardScreen } from './screens/DashboardScreen';
 import { ExpenseListScreen } from './screens/ExpenseListScreen';
 import { MoneyScreen } from './screens/MoneyScreen';
@@ -48,6 +49,7 @@ function AppRoutes() {
       <Route path="/" element={<Navigate to="/trips" replace />} />
       <Route path="/trips" element={<TripsScreen />} />
       <Route path="/trips/new" element={<CreateTripScreen />} />
+      <Route path="/profile" element={<ProfileScreen />} />
       <Route path="/trip/:tripId" element={<DashboardScreen />} />
       <Route path="/trip/:tripId/list" element={<ExpenseListScreen />} />
       <Route path="/trip/:tripId/money" element={<MoneyScreen />} />

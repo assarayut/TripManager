@@ -1,6 +1,38 @@
 import { supabase } from './supabase';
 import type { Category, Expense, PoolTransaction, Profile, Trip } from '../types';
 
+// ---------------------------------------------------------------------------
+// Account management
+// ---------------------------------------------------------------------------
+
+export async function updatePassword(newPassword: string): Promise<void> {
+  const { error } = await supabase.auth.updateUser({ password: newPassword });
+  if (error) throw error;
+}
+
+/**
+ * Change the display name shown across the app. This updates only profiles.display_name;
+ * the login username stays fixed because it's bound to a synthetic auth email that
+ * Supabase won't let us re-point to another fake address.
+ */
+export async function updateDisplayName(newName: string): Promise<void> {
+  const clean = newName.trim();
+  if (!clean) throw new Error('กรอกชื่อใหม่ก่อนนะ');
+
+  const { data: userData } = await supabase.auth.getUser();
+  const uid = userData.user?.id;
+  if (!uid) throw new Error('ยังไม่ได้เข้าสู่ระบบ');
+
+  const { error } = await supabase.from('profiles').update({ display_name: clean }).eq('id', uid);
+  if (error) throw error;
+}
+
+export async function deleteMyAccount(): Promise<void> {
+  const { error } = await supabase.rpc('delete_my_account');
+  if (error) throw error;
+  await supabase.auth.signOut();
+}
+
 function randomInviteCode(): string {
   const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // no ambiguous chars
   let code = '';

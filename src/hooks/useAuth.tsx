@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import type { Session } from '@supabase/supabase-js';
 import { supabase, usernameToEmail } from '../lib/supabase';
 import type { Profile } from '../types';
@@ -12,6 +12,7 @@ interface AuthContextValue {
   signUp: (username: string, password: string, displayName: string) => Promise<void>;
   signIn: (username: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
+  refreshProfile: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
@@ -32,21 +33,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => sub.subscription.unsubscribe();
   }, []);
 
+  const loadProfile = useCallback(async (userId: string) => {
+    const { data } = await supabase.from('profiles').select('*').eq('id', userId).maybeSingle();
+    if (data) setProfile({ id: data.id, displayName: data.display_name, hue: data.hue });
+  }, []);
+
   useEffect(() => {
     const userId = session?.user.id;
     if (!userId) {
       setProfile(null);
       return;
     }
-    supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', userId)
-      .maybeSingle()
-      .then(({ data }) => {
-        if (data) setProfile({ id: data.id, displayName: data.display_name, hue: data.hue });
-      });
-  }, [session?.user.id]);
+    loadProfile(userId);
+  }, [session?.user.id, loadProfile]);
+
+  const refreshProfile = useCallback(async () => {
+    if (session?.user.id) await loadProfile(session.user.id);
+  }, [session?.user.id, loadProfile]);
 
   const value = useMemo<AuthContextValue>(
     () => ({
@@ -72,8 +75,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       signOut: async () => {
         await supabase.auth.signOut();
       },
+      refreshProfile,
     }),
-    [session, profile, loading]
+    [session, profile, loading, refreshProfile]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
