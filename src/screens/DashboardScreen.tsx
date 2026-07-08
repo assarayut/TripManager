@@ -112,7 +112,22 @@ export function DashboardScreen() {
         <div className={styles.budgetCard}>
           <div className={styles.budgetHead}>
             <span>คงเหลือในงบ</span>
-            <span className={styles.budgetPill}>{percent}% ใช้แล้ว</span>
+            <span style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+              <span
+                onClick={() => navigate(`/trip/${tripId}/budget`)}
+                style={{
+                  cursor: 'pointer',
+                  fontSize: '10.5px',
+                  fontWeight: 600,
+                  background: 'rgba(255,255,255,0.7)',
+                  padding: '3px 9px',
+                  borderRadius: 99,
+                }}
+              >
+                ✏️ แก้ไขงบ
+              </span>
+              <span className={styles.budgetPill}>{percent}% ใช้แล้ว</span>
+            </span>
           </div>
           <div className={styles.remaining}>{formatMoney(remaining)}</div>
           <div className={styles.barTrack}>

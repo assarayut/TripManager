@@ -195,6 +195,41 @@ export async function createTrip(input: CreateTripInput, createdBy: string): Pro
   return trip;
 }
 
+/**
+ * Update a trip's total budget and per-category budgets mid-trip. Category rows
+ * with a positive value are upserted; cleared categories (0 / empty) have their
+ * row removed (the table's `budget > 0` check forbids storing a zero).
+ */
+export async function updateTripBudget(
+  tripId: string,
+  budget: number,
+  categoryBudgets: Record<string, number>
+): Promise<void> {
+  const { error: tripError } = await supabase.from('trips').update({ budget }).eq('id', tripId);
+  if (tripError) throw tripError;
+
+  const entries = Object.entries(categoryBudgets);
+  const toUpsert = entries
+    .filter(([, v]) => v > 0)
+    .map(([categoryId, v]) => ({ trip_id: tripId, category_id: categoryId, budget: v }));
+  const toClear = entries.filter(([, v]) => !(v > 0)).map(([categoryId]) => categoryId);
+
+  if (toUpsert.length > 0) {
+    const { error } = await supabase
+      .from('trip_category_budgets')
+      .upsert(toUpsert, { onConflict: 'trip_id,category_id' });
+    if (error) throw error;
+  }
+  if (toClear.length > 0) {
+    const { error } = await supabase
+      .from('trip_category_budgets')
+      .delete()
+      .eq('trip_id', tripId)
+      .in('category_id', toClear);
+    if (error) throw error;
+  }
+}
+
 export async function deleteTrip(tripId: string): Promise<void> {
   // Rows in trip_members / expenses / splits / budgets / pool_transactions cascade
   // via their `on delete cascade` foreign keys. Only the creator may delete

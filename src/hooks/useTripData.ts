@@ -10,6 +10,20 @@ export function useTrip(tripId: string | undefined) {
   });
 }
 
+export function useUpdateTripBudget(tripId: string | undefined) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: ({ budget, categoryBudgets }: { budget: number; categoryBudgets: Record<string, number> }) => {
+      if (!tripId) throw new Error('missing trip');
+      return api.updateTripBudget(tripId, budget, categoryBudgets);
+    },
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['trip', tripId] });
+      qc.invalidateQueries({ queryKey: ['trips'] });
+    },
+  });
+}
+
 export function useTripMembers(memberIds: string[] | undefined) {
   return useQuery({
     queryKey: ['profiles', memberIds],

@@ -8,6 +8,7 @@ import { TripsScreen } from './screens/TripsScreen';
 import { CreateTripScreen } from './screens/CreateTripScreen';
 import { ProfileScreen } from './screens/ProfileScreen';
 import { AdminScreen } from './screens/AdminScreen';
+import { EditBudgetScreen } from './screens/EditBudgetScreen';
 import { DashboardScreen } from './screens/DashboardScreen';
 import { ExpenseListScreen } from './screens/ExpenseListScreen';
 import { MoneyScreen } from './screens/MoneyScreen';
@@ -53,6 +54,7 @@ function AppRoutes() {
       <Route path="/profile" element={<ProfileScreen />} />
       <Route path="/admin" element={<AdminScreen />} />
       <Route path="/trip/:tripId" element={<DashboardScreen />} />
+      <Route path="/trip/:tripId/budget" element={<EditBudgetScreen />} />
       <Route path="/trip/:tripId/list" element={<ExpenseListScreen />} />
       <Route path="/trip/:tripId/money" element={<MoneyScreen />} />
       <Route path="/trip/:tripId/add" element={<AddExpenseScreen />} />
