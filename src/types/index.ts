@@ -5,6 +5,15 @@ export interface Profile {
   id: string;
   displayName: string;
   hue: number;
+  isAdmin?: boolean;
+}
+
+export interface AdminAccount {
+  id: string;
+  username: string;
+  displayName: string;
+  isAdmin: boolean;
+  createdAt: string;
 }
 
 export interface Category {

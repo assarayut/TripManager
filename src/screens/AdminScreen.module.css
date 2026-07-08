@@ -1,0 +1,149 @@
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-screen, oklch(0.98 0.01 220));
+}
+
+.header {
+  padding: 50px 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.backButton {
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  background: oklch(0.94 0.015 220);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: oklch(0.42 0.03 235);
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.title {
+  font-family: var(--font-display, 'Kanit', sans-serif);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-text-heading, oklch(0.3 0.03 235));
+}
+
+.subtitle {
+  padding: 4px 20px 0 68px;
+  font-size: 12px;
+  color: oklch(0.55 0.02 235);
+}
+
+.body {
+  flex: 1;
+  overflow: auto;
+  padding: 16px 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.count {
+  font-size: 12px;
+  color: oklch(0.5 0.02 235);
+  margin-bottom: 2px;
+}
+
+.row {
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: 0 4px 14px -8px rgba(30, 60, 90, 0.18);
+}
+
+.rowTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.names {
+  flex: 1;
+  min-width: 0;
+}
+
+.displayName {
+  font-size: 14px;
+  font-weight: 600;
+  color: oklch(0.3 0.02 235);
+}
+
+.username {
+  font-size: 12px;
+  color: oklch(0.55 0.02 235);
+  margin-top: 1px;
+}
+
+.adminBadge {
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 700;
+  color: oklch(0.45 0.1 178);
+  background: oklch(0.94 0.05 178);
+  border-radius: 99px;
+  padding: 3px 8px;
+}
+
+.youBadge {
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 700;
+  color: oklch(0.5 0.02 235);
+  background: oklch(0.94 0.01 220);
+  border-radius: 99px;
+  padding: 3px 8px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.resetButton,
+.deleteButton {
+  cursor: pointer;
+  flex: 1;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.resetButton {
+  background: oklch(0.95 0.03 178);
+  color: oklch(0.4 0.08 178);
+}
+
+.deleteButton {
+  background: oklch(0.95 0.05 25);
+  color: oklch(0.5 0.13 25);
+}
+
+.loading,
+.empty {
+  text-align: center;
+  padding: 40px 16px;
+  color: oklch(0.55 0.02 235);
+  font-size: 13px;
+}

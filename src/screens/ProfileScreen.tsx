@@ -98,6 +98,12 @@ export function ProfileScreen() {
           </div>
         </div>
 
+        {profile?.isAdmin && (
+          <div className={styles.saveButton} onClick={() => navigate('/admin')}>
+            🛡️ จัดการบัญชีผู้ใช้ (ผู้ดูแล)
+          </div>
+        )}
+
         <div className={styles.card}>
           <div className={styles.cardTitle}>เปลี่ยนชื่อที่แสดง</div>
           <div className={styles.fieldLabel}>ชื่อใหม่</div>

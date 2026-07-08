@@ -1,5 +1,5 @@
 import { supabase } from './supabase';
-import type { Category, Expense, PoolTransaction, Profile, Trip } from '../types';
+import type { AdminAccount, Category, Expense, PoolTransaction, Profile, Trip } from '../types';
 
 // ---------------------------------------------------------------------------
 // Account management
@@ -31,6 +31,32 @@ export async function deleteMyAccount(): Promise<void> {
   const { error } = await supabase.rpc('delete_my_account');
   if (error) throw error;
   await supabase.auth.signOut();
+}
+
+// ---------------------------------------------------------------------------
+// Admin
+// ---------------------------------------------------------------------------
+
+export async function adminListAccounts(): Promise<AdminAccount[]> {
+  const { data, error } = await supabase.rpc('admin_list_accounts');
+  if (error) throw error;
+  return (data ?? []).map((r: { id: string; username: string; display_name: string; is_admin: boolean; created_at: string }) => ({
+    id: r.id,
+    username: r.username,
+    displayName: r.display_name,
+    isAdmin: r.is_admin,
+    createdAt: r.created_at,
+  }));
+}
+
+export async function adminDeleteAccount(targetId: string): Promise<void> {
+  const { error } = await supabase.rpc('admin_delete_account', { target: targetId });
+  if (error) throw error;
+}
+
+export async function adminResetPassword(targetId: string, newPassword: string): Promise<void> {
+  const { error } = await supabase.rpc('admin_reset_password', { target: targetId, new_password: newPassword });
+  if (error) throw error;
 }
 
 function randomInviteCode(): string {

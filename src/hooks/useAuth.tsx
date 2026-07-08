@@ -35,7 +35,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const loadProfile = useCallback(async (userId: string) => {
     const { data } = await supabase.from('profiles').select('*').eq('id', userId).maybeSingle();
-    if (data) setProfile({ id: data.id, displayName: data.display_name, hue: data.hue });
+    if (data) setProfile({ id: data.id, displayName: data.display_name, hue: data.hue, isAdmin: data.is_admin ?? false });
   }, []);
 
   useEffect(() => {
